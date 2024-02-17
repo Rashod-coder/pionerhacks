@@ -1,7 +1,7 @@
 import openai
 open.ai.key = "sk-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"
 
-messages = []; 
+messages = []
 messages.append()
 messages = [{"role": "system", "content": "You are a math tutor"}]
 
@@ -42,7 +42,7 @@ def CustomChatGPT(user_input):
 #     messages.append({"role": "assistant", "content": reply})
 #     print("\n" + reply + "\n")
 
-system_msg = input("Enter your math problem: ");
+system_msg = input("Enter your math problem: ")
 completion = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages= [{"role": "user", "content": system_msg }])
 print(completion.choices[0].message.content)
 

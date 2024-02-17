@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Home.css'
 
 function Home() {
     const [input, setInput] = useState(''); 
