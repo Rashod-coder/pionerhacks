@@ -1,0 +1,36 @@
+public class OpenAiOutputReader {
+    String rP;
+    String PassKeyStart = "(((";
+    String PassKeyEnd = ")))";
+    File file;
+    public OpenAiOutputReader(File Response) {
+        file = Response;
+        String Answer = ReadFile();
+        if (Answer!=null) {
+            System.out.println(Answer);
+            System.out.println()
+        }
+    }
+
+    public String ReadFile() throws FileNotFoundException (){
+		Scanner sc = new Scanner(file);
+		ArrayList <String> arr =  new ArrayList<>();
+        int index = 0;
+        int index1 = -1;
+        String Line;
+		while(sc.hasNext() && index1 == -1) {
+            Line = sc.nextLine();
+            index1 = ( Line.indexOf(PassKeyStart) != -1 ) ? Line.indexOf(PassKeyStart) : -1;
+	    }
+        index1++;
+        int index2;
+        if (index1<Line.length ) {
+            index2 = Line.indexOf(PassKeyEnd, index1);
+        } else { System.out.println("FATAL ERROR GGZKLDSJFKLSDJ"); return null }
+        
+        if (index2 == -1) { System.out.println("FATAL ERROR ADKLSFJS;LADFJDS;LKJ"); return null; }
+        return String.substring(index1,index2);
+    }
+
+    
+}
