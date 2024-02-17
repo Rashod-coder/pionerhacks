@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Nav, Navbar } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Note the change here
 import About from './About';
+import Home from './Home';
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
           </Nav>
         </Navbar>
 
-        <Routes> {/* Changed from Switch to Routes */}
-          <Route path='/about' element={<About />} /> {/* Note the change in syntax here */}
+        <Routes> 
+          <Route path='/about' element={<About />} /> 
+          <Route path='/' element={<Home />} />
         </Routes>
       </div>
     </Router>
