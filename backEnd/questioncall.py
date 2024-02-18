@@ -1,8 +1,10 @@
+# key = sk-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
 import openai
-open.ai.key = "sk-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"
+openai.api_key = "sk-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"
+
 
 messages = []
-messages.append()
+#messages.append()
 messages = [{"role": "system", "content": "You are a math tutor"}]
 
 def check():
@@ -44,6 +46,13 @@ def CustomChatGPT(user_input):
 
 system_msg = input("Enter your math problem: ")
 completion = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages= [{"role": "user", "content": system_msg }])
+# Open a file named "output.txt" in write mode ('w')
+with open('output.txt', 'w') as f:
+    # Write data to the file
+    f.write(completion.choices[0].message.content+"\n")
+
+# File automatically closed when exiting the 'with' block
+init('output.txt')
 print(completion.choices[0].message.content)
 
 
