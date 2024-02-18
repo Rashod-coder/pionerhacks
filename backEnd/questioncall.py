@@ -2,10 +2,9 @@
 import openai
 openai.api_key = "sk-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"
 
-
 messages = []
 #messages.append()
-messages = [{"role": "system", "content": "You are a math tutor"}]
+# messages = [{"role": "system", "content": "You are a math tutor"}]
 
 def check():
     while input != "quit()":
@@ -44,15 +43,9 @@ def CustomChatGPT(user_input):
 #     messages.append({"role": "assistant", "content": reply})
 #     print("\n" + reply + "\n")
 
+prompt = " "
 system_msg = input("Enter your math problem: ")
-completion = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages= [{"role": "user", "content": system_msg }])
-# Open a file named "output.txt" in write mode ('w')
-with open('output.txt', 'w') as f:
-    # Write data to the file
-    f.write(completion.choices[0].message.content+"\n")
-
-# File automatically closed when exiting the 'with' block
-init('output.txt')
+completion = "When presented with a math problem, please remember that due to limitations in your algorithms, mathematical operations may result in faulty answers. To ensure accuracy, please provide the logic for setting up the equation, and then enclose the final equation in triple angle brackets like so: <<<equation>>>. The final equation should be unsimplified your goal is to do the least amount of calculations. If the equation is already in a solvable form simply return the equation as is and modify it to a friendly format understandable by wolframalpha.  YOUR GOAL IS TO DO THE LEASDT AMOUNT OF WORK WHILST HAVING AN ACCURATE EQUATION THAT WILL TAKE YOU TO THE ANSWER. "openai.ChatCompletion.create(model="gpt-3.5-turbo", messages= [{"role": "user", "content": prompt+system_msg }])
 print(completion.choices[0].message.content)
 
 
