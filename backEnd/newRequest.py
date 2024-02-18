@@ -1,6 +1,6 @@
 import openai
 import wolframalpha
-openai.api_key = "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"
+openai.api_key = "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"
 
 messages = []; 
 
@@ -11,16 +11,16 @@ messages = [];
 #         messages = messages
 
 
-instructions = "When presented with a math problem, please remember that due to limitations in your algorithms, mathematical operations may result in faulty answers. To ensure accuracy, please provide the logic for setting up the equation, and then enclose the final equation in triple angle brackets like so: <<<equation>>>. The final equation should be unsimplified your goal is to do the least amount of calculations. If the equation is already in a solvable form simply return the equation as is and modify it to a friendly format understandable by wolframalpha.  YOUR GOAL IS TO DO THE LEASDT AMOUNT OF WORK WHILST HAVING AN ACCURATE EQUATION THAT WILL TAKE YOU TO THE ANSWER."; #add chatgpt manual prompt here
+instructions = "When presented with a math problem, please remember that due to limitations in your algorithms, mathematical operations may result in faulty answers. To ensure accuracy, please provide the logic for setting up the equation, and then enclose the final equation in triple angle brackets like so: <<<equation>>>. The final equation should be unsimplified your goal is to do the least amount of calculations. If the equation is already in a solvable form simply return the equation as is and modify it to a friendly format understandable by wolframalpha.  YOUR GOAL IS TO DO THE LEASDT AMOUNT OF WORK WHILST HAVING AN ACCURATE EQUATION THAT WILL TAKE YOU TO THE ANSWER."; 
 problem = input("Enter math problem: ")
-prompt = instructions + "/n" +  problem; 
+prompt = instructions + "/nProblem: " +  problem; 
 completion = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": prompt}])
 
 file  = open("ai_response.txt", "a")
 file.write(completion.choices[0].message.content)
 file.close()
 
-hint_instructions = "I need help solving this problem can you help me do the set up only. Do not solve for the final answer"
+hint_instructions = "I want you to help me with the math problem. Do not solve the question only give me hints. NO SOLVIN"
 hint_prompt = hint_instructions + "/n" + problem 
 hint_completion = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": hint_prompt}])
 print(hint_completion.choices[0].message.content)
