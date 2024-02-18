@@ -24,7 +24,7 @@ function Home() {
     };
 
     const handleGetAnswer = () => {
-        const answer = "The answer to your math problem is 42.";
+        const answer = "The answer to your math problem is: ";
         setMessages([...messages, answer]);
     };
 

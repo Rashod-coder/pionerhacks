@@ -1,7 +1,7 @@
 class OpenAiOutputReader:
     PassKeyStart = "<<<"
     PassKeyEnd = ">>>"
-
+    Out
     def init(self, filename):
         try:
             with open(filename, 'r') as file:
@@ -28,3 +28,21 @@ class OpenAiOutputReader:
 if __name == "__main":
     file_name = "my.txt"
     m = OpenAiOutputReader(file_name)
+
+
+import wolframalpha
+# Define your WolframAlpha API key
+app_id = 'EEXP69-GGL8V57YY'
+
+# Initialize the client
+client = wolframalpha.Client(app_id)
+
+# Query the API with your input
+input_query = "population of France"
+res = client.query(input_query)
+
+# Print the result
+for pod in res.pods:
+    print(pod.title)
+    for sub in pod.subpods:
+        print(sub.plaintext)
